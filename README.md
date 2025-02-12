@@ -39,3 +39,10 @@ To submit your solution:
 * Clone this repo
 * Commit your finished solution to your own repo
 * Grant `scollins-smartwyre`, `andysbolton` and `scooney-smartwyre` access to your clone your repo for review
+
+##  UPDATES
+Updated the `azurerm_windows_function_app` module allowing for fully customizable function app config
+Really want to do the same for the other resources but not sure on time
+Realistically need to re structure the entire layout.
+
+Will add Workflow files if i have the time.
