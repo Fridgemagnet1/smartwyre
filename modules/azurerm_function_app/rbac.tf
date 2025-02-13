@@ -11,9 +11,9 @@ for_each = var.functions
   key_vault_id = var.key_vault_id
   tenant_id    = var.tenant_id
 
-  object_id = azurerm_windows_function_app.new[each.key].identity[0].principal_id
+  object_id = azurerm_windows_function_app.new[each.key].identity[0].principal_id # this would defualt to system assigned id from related function 
 
   secret_permissions = [
-    "Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"
+    "Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set" # this would be a variable that can be set in root main.tf
   ]
 }

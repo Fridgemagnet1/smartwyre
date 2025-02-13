@@ -45,4 +45,13 @@ Updated the `azurerm_windows_function_app` module allowing for fully customizabl
 Really want to do the same for the other resources but not sure on time
 Realistically need to re structure the entire layout.
 
-Will add Workflow files if i have the time.
+Created new modules for key vault and resource group along with function for neatness.
+
+would normally have a sub folder under deployments, depending on how you would like to organise, either sub folder per az resource, or sub folder per business application with related resources inside.
+
+Added a fake backend.tf to deployment. would require one in each subfolder if i went that route
+
+
+Added Reusable workflows:
+Best when you have multiple terraform repositories, e.g for different business units. instead of having multiple workflows, centralise it in a reusable repo holding reusable workflows then caller workflows in each tf repo.
+This current way is using a github app as this would be runner in an on prem runner, could simplify it if using cloud hosted.

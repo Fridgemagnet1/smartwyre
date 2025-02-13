@@ -99,3 +99,9 @@ variable "functions_extension_version" {
   default     = "~4"
   description = "The version of the Azure Functions runtime to use. Defaults to `~4`."
 }
+
+variable "app_settings" {
+  type = map(string)
+  default = {}
+  description = "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values to assign to the Function App. "
+}

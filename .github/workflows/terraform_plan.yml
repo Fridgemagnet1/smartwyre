@@ -1,0 +1,23 @@
+name: Integration workflow that acts as caller
+
+on: 
+    push:
+        branches: [ "integration" ] # Brnahcing structure I currently use
+        paths:
+            - '**/deployments/**'
+
+jobs:
+    call-workflow-in-local-repo:
+        uses: .github/workflows/terraform-plan_reusable.yml@main
+        with:
+            environment: uat # would create other file for prod
+            githubOwner: example
+            githubAppId: # github app ID
+            working-directory: deployments
+        secrets:
+            AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_PROD_SUBSCRIPTION_ID }}
+            AZURE_CLIENT_ID: ${{ secrets.AZURE_GITHUB_PROD_CLIENT_ID }}
+            AZURE_CLIENT_SECRET: ${{ secrets.AZURE_GITHUB_PROD_CLIENT_SECRET }}
+            AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID}}
+            GH_APP_PRIVATE_KEY: ${{ secrets.GH_DEVOPS_APP_PRIVATE_KEY }}
+            GH_IAC_ENT_TOKEN: ${{ secrets.GH_IAC_ENT_TOKEN }}
