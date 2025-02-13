@@ -51,6 +51,12 @@ would normally have a sub folder under deployments, depending on how you would l
 
 Added a fake backend.tf to deployment. would require one in each subfolder if i went that route
 
+Not actually worked on a function app so not 100% on cost optimisation, i guess it would be scaling up and down due to demand. if they have any pricing plans, use them. Scale if possible in line with demand
+For security, do not make is publicly accessible, only give it the permissions it requires for the kv, e.g get secrets...
+ remove public access from kv, only allowed ips can access it. use the role assignement part so specifc users/MI's can acces it.
+
+
+for testing, run a tf validate and plan, would then have dev/uat env for deploying to test intiailly before prod
 
 Added Reusable workflows:
 Best when you have multiple terraform repositories, e.g for different business units. instead of having multiple workflows, centralise it in a reusable repo holding reusable workflows then caller workflows in each tf repo.
