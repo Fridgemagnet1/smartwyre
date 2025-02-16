@@ -41,23 +41,22 @@ To submit your solution:
 * Grant `scollins-smartwyre`, `andysbolton` and `scooney-smartwyre` access to your clone your repo for review
 
 ##  UPDATES
-Updated the `azurerm_windows_function_app` module allowing for fully customizable function app config
-Really want to do the same for the other resources but not sure on time
-Realistically need to re structure the entire layout.
+Updated the `azurerm_windows_function_app` module, allowing for a fully customisable function app config. Really want to do the same for the other resources but not sure on time. Realistically need to restructure the entire layout.
 
-Created new modules for key vault and resource group along with function for neatness.
+Created new modules for Key Vault and Resource Group, along with a function app for neatness.
+Would normally have a subfolder under deployments, depending on how you would like to organise it—either a subfolder per Azure resource or a subfolder per business application with related resources inside.
 
-would normally have a sub folder under deployments, depending on how you would like to organise, either sub folder per az resource, or sub folder per business application with related resources inside.
+Added a fake backend.tf to deployment. Would require one in each subfolder if I went that route.
 
-Added a fake backend.tf to deployment. would require one in each subfolder if i went that route
+Not actually worked on a function app, so not 100% sure on cost optimisation. I guess it would be scaling up and down due to demand. If they have any pricing plans, use them. Scale if possible in line with demand.
 
-Not actually worked on a function app so not 100% on cost optimisation, i guess it would be scaling up and down due to demand. if they have any pricing plans, use them. Scale if possible in line with demand
-For security, do not make is publicly accessible, only give it the permissions it requires for the kv, e.g get secrets...
- remove public access from kv, only allowed ips can access it. use the role assignement part so specifc users/MI's can acces it.
+For security, do not make it publicly accessible—only give it the permissions it requires for the Key Vault, e.g., get secrets. Remove public access from Key Vault—only allowed IPs can access it. Use the role assignment part so specific users/MIs can access it.
+
+For testing, run a terraform validate and terraform plan. Would then have a dev/UAT environment for deploying to test initially before production.
+
+Added reusable workflows:
+Best when you have multiple Terraform repositories, e.g., for different business units. Instead of having multiple workflows, centralise them in a reusable repo holding reusable workflows, then caller workflows in each Terraform repo.
+
+This current way is using a GitHub App, as this would be run on an on-prem runner. Could simplify it if using cloud-hosted.
 
 
-for testing, run a tf validate and plan, would then have dev/uat env for deploying to test intiailly before prod
-
-Added Reusable workflows:
-Best when you have multiple terraform repositories, e.g for different business units. instead of having multiple workflows, centralise it in a reusable repo holding reusable workflows then caller workflows in each tf repo.
-This current way is using a github app as this would be runner in an on prem runner, could simplify it if using cloud hosted.
